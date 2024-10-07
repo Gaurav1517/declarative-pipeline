@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+
+    environment{
+        PATH = "/opt/maven/bin:$PATH"
+    }
+    stages{
+        stage('Git Checkout'){
+            steps{
+                echo "Git Checkout from Github Jenkinsfile *Jenkins-custom-file*"
+            }
+        }
+        stage("Maven Build"){
+            steps{
+                sh "mvn clean package"
+                sh "mv target/*.web target/myweb.web"
+            }
+        }
+        stage("Deploy"){
+                steps{
+                        sshagent(['tomcat']) {
+                                sh """
+                                        scp -o StrictHostKeyChecking=no target/myweb.web root@192.168.157.133:/opt/tomcat/webapps/
+                                        ssh root@192.168.157.133 /opt/tomcat/bin/shutdown.sh
+                                        ssh root@192.168.157.133 /opt/tomcat/bin/startup.sh
+                    
+                                """
+                        }
+                }    
+        }
+    }
+}

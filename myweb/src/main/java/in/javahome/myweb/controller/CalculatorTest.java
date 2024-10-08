@@ -1,6 +1,6 @@
 package in.javahome.myweb.controller;
 
-public class Hello {
+public class CalculatorTest {
 
     public static void main(String[] args) {
         // Print "Hello from Java"

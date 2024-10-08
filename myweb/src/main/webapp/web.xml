@@ -1,0 +1,36 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>My Web Application</display-name>
+
+    <!-- Define a servlet -->
+    <servlet>
+        <servlet-name>CalculatorServlet</servlet-name>
+        <servlet-class>in.javahome.myweb.controller.CalculatorServlet</servlet-class>
+    </servlet>
+
+    <!-- Map the servlet to a URL pattern -->
+    <servlet-mapping>
+        <servlet-name>CalculatorServlet</servlet-name>
+        <url-pattern>/calculate</url-pattern>
+    </servlet-mapping>
+
+    <!-- Configure welcome file -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file> <!-- Change to your welcome file if needed -->
+    </welcome-file-list>
+
+    <!-- Define error pages -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.html</location> <!-- Path to custom error page -->
+    </error-page>
+
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error/500.html</location> <!-- Path to custom error page -->
+    </error-page>
+</web-app>

@@ -16,10 +16,10 @@
 
     <!-- Set default properties -->
     <properties>
-        <!-- Java version (can be adjusted) -->
+        <!-- Java version -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        
+
         <!-- Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -30,6 +30,7 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
         <maven.jar.plugin.version>3.1.2</maven.jar.plugin.version>
+        <maven.plugin.version>3.8.1</maven.plugin.version> <!-- Added this line -->
     </properties>
 
     <!-- Dependencies -->
@@ -77,6 +78,9 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <compilerArgs>
+                        <arg>-Xlint:unchecked</arg> <!-- Option to display unchecked warnings -->
+                    </compilerArgs>
                 </configuration>
             </plugin>
 
@@ -142,5 +146,3 @@
     </distributionManagement>
 
 </project>
-
-

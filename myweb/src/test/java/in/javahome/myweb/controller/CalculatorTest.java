@@ -1,19 +1,17 @@
 package in.javahome.myweb.controller;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import junit.framework.Assert;  // Change to JUnit 4 imports
+import junit.framework.TestCase; // Change to JUnit 4 imports
+import org.junit.Test;
 
-public class CalculatorTest {
+public class CalculatorTest extends TestCase {
 
     @Test
     public void testAddition() {
-        // Example of a simple addition test
-        int result = add(2, 3);
-        Assertions.assertEquals(5, result); // Using Assertions from JUnit 5
-    }
-
-    // Assuming this is your addition method
-    private int add(int a, int b) {
-        return a + b;
+        int a = 5;
+        int b = 10;
+        int expected = 15;
+        int result = a + b;
+        Assert.assertEquals(expected, result);
     }
 }

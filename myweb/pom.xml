@@ -16,10 +16,10 @@
 
     <!-- Set default properties -->
     <properties>
-        <!-- Java version -->
+        <!-- Java version (can be adjusted) -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
+        
         <!-- Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -30,16 +30,15 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
         <maven.jar.plugin.version>3.1.2</maven.jar.plugin.version>
-        <maven.plugin.version>3.8.1</maven.plugin.version> <!-- Added this line -->
     </properties>
 
     <!-- Dependencies -->
     <dependencies>
-        <!-- Example Dependency: JUnit for Testing -->
+        <!-- Example Dependency: JUnit for Testing (JUnit 4) -->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.0</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version> <!-- Use JUnit 4 -->
             <scope>test</scope>
         </dependency>
 
@@ -78,9 +77,6 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
-                    <compilerArgs>
-                        <arg>-Xlint:unchecked</arg> <!-- Option to display unchecked warnings -->
-                    </compilerArgs>
                 </configuration>
             </plugin>
 

@@ -4,141 +4,44 @@
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Basic Project Information -->
     <groupId>com.example</groupId>
     <artifactId>my-app</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>My Universal Java Application</name>
-    <description>A universal POM for Java projects</description>
-    <url>http://www.example.com</url>
-
-    <!-- Set default properties -->
     <properties>
-        <!-- Java version (can be adjusted) -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        
-        <!-- Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- Docker image prefix (optional) -->
-        <docker.image.prefix>your-docker-prefix</docker.image.prefix>
-
-        <!-- Default versions for plugins -->
-        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-        <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
-        <maven.jar.plugin.version>3.1.2</maven.jar.plugin.version>
     </properties>
 
-    <!-- Dependencies -->
     <dependencies>
-        <!-- Example Dependency: JUnit for Testing (JUnit 4) -->
+        <!-- JUnit 5 Dependency -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version> <!-- Use JUnit 4 -->
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.9.1</version> <!-- Use a compatible version of JUnit 5 -->
             <scope>test</scope>
         </dependency>
-
-        <!-- Example Dependency: SLF4J for Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.30</version>
-        </dependency>
-
-        <!-- Example Dependency: Logback for Logging Implementation -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
-        </dependency>
-
-        <!-- Example Dependency: Spring Core (adjust to your needs) -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>5.3.9</version>
-        </dependency>
-
-        <!-- Other common dependencies can be added here -->
+        <!-- Other dependencies can be added here -->
     </dependencies>
 
-    <!-- Build Configuration -->
     <build>
         <plugins>
-            <!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
-
-            <!-- Surefire Plugin for Unit Testing -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.plugin.version}</version>
-                <configuration>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                </configuration>
+                <version>2.22.2</version>
             </plugin>
-
-            <!-- JAR Plugin for Packaging -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>${maven.jar.plugin.version}</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.example.Main</mainClass> <!-- Set the main class for your app -->
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-
-            <!-- Docker Plugin (optional, adjust as needed) -->
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>1.1.0</version>
-                <configuration>
-                    <imageName>${docker.image.prefix}/my-app</imageName>
-                    <dockerHost>unix:///var/run/docker.sock</dockerHost>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
-
-    <!-- Plugin Repositories -->
-    <pluginRepositories>
-        <pluginRepository>
-            <id>central</id>
-            <name>Maven Central Repository</name>
-            <url>https://repo.maven.apache.org/maven2</url>
-        </pluginRepository>
-    </pluginRepositories>
-
-    <!-- Distribution Management (optional, can be removed or adjusted) -->
-    <distributionManagement>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <url>http://your-nexus-repo/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>nexus-releases</id>
-            <url>http://your-nexus-repo/releases</url>
-        </repository>
-    </distributionManagement>
-
 </project>

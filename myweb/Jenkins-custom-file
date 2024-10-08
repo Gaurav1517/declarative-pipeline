@@ -7,6 +7,7 @@ pipeline{
     stages{
         stage('Git Checkout'){
             steps{
+                git branch: 'main', credentialsId: 'mytoken', url: 'https://github.com/Gaurav1517/declarative-pipeline.git'
                 echo "Git Checkout from Github Jenkinsfile *Jenkins-custom-file*"
             }
         }

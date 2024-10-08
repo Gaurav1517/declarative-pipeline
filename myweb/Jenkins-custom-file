@@ -13,9 +13,10 @@ pipeline{
         }
         stage("Maven Build"){
             steps{
-                dir('/var/lib/jenkins/workspace/Declarative-pipeline/myweb')
-                sh "mvn clean package"
-                sh "mv target/*.war target/myweb.war"
+                dir('/var/lib/jenkins/workspace/Declarative-pipeline/myweb'){
+                    sh "mvn clean package"
+                    sh "mv target/*.war target/myweb.war"
+                }
             }
         }
         stage("Deploy"){
